@@ -1,0 +1,18 @@
+# Numerical stack
+matplotlib
+numpy
+
+# Jupyter stack
+jupyter
+jupyterlab
+
+# IPython stack
+ipykernel
+ipython
+ipywidgets
+
+# Bayesian inference stack
+pymc3
+
+# Utilities
+tqdm
