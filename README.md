@@ -25,40 +25,9 @@ Unfortunately I don't yet have tested versions of the install script for these O
 
 # Running the code
 
-To run the code, change to the `run` directory. If it isn't already, activate the virtual environment
+After running the install script, open `START` from within a file browser. Alternatively,
 
-    source venv/bin/activate
-    
-Running a script is then done by executing a line of the form
-
->>>> Change execution call as needed <<<<
-
-    python ../code/[script file] params/[param file] ""
-
-for example,
-
-    python ../code/gradient_descent.py params/gradient_descent.py ""
-
-Note the extra quotes at the end – this is an artifact of the way we've accomodated parallelized calls.
-
->>>> Sumatra/mackelab.smttk only section >>>>
-
-Executing through `Sumatra` is very similar
-
-    smt run -m ../code/[script file] params/[param file] ""
-
-To execute multiple runs at once, optionally providing the number of cores to use, use the provided `smttk` wrapper for `Sumatra`:
-    
-    smttk run -n[cores] -m ../code/[script file] params: params/[param file 1] params/[param file 2] ...
-    
-Note that when using `smttk` we don't need the trailing quotes.
-If only one parameter file is provided, `params:` is not necessary:
-
-    smttk run -n[cores] -m ../code/[script file] params/[param file]
-    
-Any parameter file can use the specialized [expansion syntax](#parameter-expansion-syntax) to define a range of parameters to iterate over.
-    
-<<<< End Sumatra/mackelab.smttk specific section <<<<
+    ./START
     
 # Running in a Jupyter Lab
 
@@ -69,19 +38,6 @@ If you didn't run the installation script you will need to register the kernel y
     source venv/bin/activate
     python -m ipykernel install --user --name [kernel name] --display-name "[kernel display name]"
     
->>>> mackelab.smttk specific >>>>
-
-# Parameter expansion syntax
-
-Parameter files follow the same format as NeuroEnsemble's [Parameters](https://parameters.readthedocs.io/en/latest/) package. One addition is made to the format to allow easily specifying ranges of parameters. For example, if a script requires a single parameter `mu` and$ that we want to run it with values 1, 5 and 20, we would write the following in the parameters file:
-
-    {
-      mu: *[1, 5, 20]
-    }
-
-This is only supported when calling with `smttk`.
-
-<<<< end mackelab.smttk specific <<<<
 
 # Manual installation
 

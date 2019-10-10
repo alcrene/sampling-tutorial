@@ -1,6 +1,8 @@
 # Numerical stack
 matplotlib
 numpy
+seaborn
+pandas
 
 # Jupyter stack
 jupyter
@@ -12,7 +14,11 @@ ipython
 ipywidgets
 
 # Bayesian inference stack
+theano
 pymc3
+arviz
+-e git+ssh://git@github.com/mackelab/theano_shim.git#egg=theano_shim
 
 # Utilities
 tqdm
+-e git+ssh://git@github.com/mackelab/mackelab-toolbox.git#egg=mackelab-toolbox

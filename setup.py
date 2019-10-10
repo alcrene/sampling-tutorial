@@ -4,12 +4,12 @@
 from setuptools import setup
 
 setup(
-      name='',
+      name='sampling-tutorial',
       version='0.1',
       description="",
 
-      author="author",
-      author_email="email",
+      author="Alexandre René",
+      author_email="arene010@uottawa.ca",
 
       license='MIT',
 
@@ -23,7 +23,7 @@ setup(
       
       python_requires='>=3.6',
       
-      packages=["python"],
+      packages=["sampling_tutorial"],
 
       install_requires=['numpy']
      )

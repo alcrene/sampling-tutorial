@@ -56,4 +56,5 @@ echo "Deactivated virtual environment."
 
 # Make `start.sh` executable
 cd "$DIR"
-chmod a+x CLICK_TO_START
+chmod a+x START
+chmod a+x deregister_kernel.sh
