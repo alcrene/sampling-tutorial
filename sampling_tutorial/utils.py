@@ -2,6 +2,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+import pandas as pd
 import theano_shim as shim
 import pymc3 as pm
 import arviz as az
@@ -105,14 +106,17 @@ class FlatUpperBound(FlatBound):
 
 def effective_n(trace, sigdigits=3):
     ess = az.stats.diagnostics.ess(trace)
-    data = round(ess['z'].data, sigdigits)
+    data = round(ess['c'].data, sigdigits)
     if np.all(data == data.astype(int)):
         data = data.astype(int)
-    ess['z'].data = data
+    ess['c'].data = data
     df = ess.to_dataframe()
-    df.index = pd.Index(['$z_0$', '$z_1$'])
+    df.index = pd.Index(['$c_0$', '$c_1$'])
     df.columns = pd.Index(['effective sample size'])
-    return df
+    dftotal = pd.DataFrame(np.ones(2, dtype=int)*len(trace)*trace.nchains,
+                           index = pd.Index(['$c_0$', '$c_1$']),
+                           columns = pd.Index(['total samples']))
+    return pd.concat((df, dftotal), axis='columns')
 
 def round(x, sigfigs):
     if isinstance(x, np.ndarray):
@@ -156,6 +160,14 @@ def format_traceplot(axes):
     fig.set_figwidth(8)
     fig.set_figheight(3)
     return axes
+        
+def format_joint_plot(axes, radius=None):
+    axjoin, axhistx, axhisty = axes
+    axjoin.set_xlabel('$c_0$')
+    axjoin.set_ylabel('$c_1$')
+    if radius is not None:
+        axjoin.set_xlim(-radius, radius)
+        axjoin.set_ylim(-radius, radius)
         
 ##################
 # Archive

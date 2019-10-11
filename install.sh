@@ -48,8 +48,12 @@ if [ -e "setup.py" ]; then  # Only install if there is project-specific code
     pip install -e .
 fi
 
-echo "Registering IPython kernel for use in Jupyter."
+echo "Registering IPython kernel for use in Jupyter..."
 python -m ipykernel install --user --name $KERNELNAME --display-name "$DISPLAYNAME"
+
+echo "Configuring Jupyter widgets..."
+jupyter nbextension enable --py widgetsnbextension
+jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
 deactivate
 echo "Deactivated virtual environment."

@@ -7,11 +7,12 @@ pandas
 # Jupyter stack
 jupyter
 jupyterlab
+ipywidgets
+nodejs  # for ipywidgets
 
 # IPython stack
 ipykernel
 ipython
-ipywidgets
 
 # Bayesian inference stack
 theano
